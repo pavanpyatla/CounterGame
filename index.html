@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex justify-center items-center h-screen bg-gray-100">
+    <div class="text-center p-10 bg-white shadow-lg rounded-lg">
+        <h1 class="text-4xl font-extrabold">Counter</h1>
+        <p id="counterValue" class="text-6xl font-black mt-5">0</p>
+        <div class="mt-5">
+            <button onClick="onDecrement()" class="bg-gray-200 border-2 border-black rounded-md px-4 py-2 m-2">DECREASE</button>
+            <button onClick="onReset()" class="bg-gray-200 border-2 border-black rounded-md px-4 py-2 m-2">RESET</button>
+            <button onClick="onIncrement()" class="bg-gray-200 border-2 border-black rounded-md px-4 py-2 m-2">INCREASE</button>
+        </div>
+    </div>
+
+    <script>
+        let counterElement = document.getElementById("counterValue");
+
+        function onIncrement() {
+            let previousCounterValue = counterElement.textContent;
+            let updateCounterValue = parseInt(previousCounterValue) + 1;
+            updateCounterColor(updateCounterValue);
+            counterElement.textContent = updateCounterValue;
+        }
+
+        function onDecrement() {
+            let previousCounterValue = counterElement.textContent;
+            let updateCounterValue = parseInt(previousCounterValue) - 1;
+            updateCounterColor(updateCounterValue);
+            counterElement.textContent = updateCounterValue;
+        }
+
+        function onReset() {
+            counterElement.textContent = 0;
+            counterElement.style.color = "black";
+        }
+
+        function updateCounterColor(value) {
+            if (value > 0) {
+                counterElement.style.color = "green";
+            } else if (value < 0) {
+                counterElement.style.color = "red";
+            } else {
+                counterElement.style.color = "black";
+            }
+        }
+    </script>
+</body>
+
+</html>
